@@ -1,0 +1,9 @@
+{
+	"name": "prasannadatafactory1611",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e5d4f95d-f677-4a46-bb46-f95d895bee63",
+		"tenantId": "d37e27b5-ff66-4a56-b537-6455c4e9a589"
+	}
+}
