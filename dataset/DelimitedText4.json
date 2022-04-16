@@ -7,8 +7,7 @@
 		},
 		"parameters": {
 			"myfile": {
-				"type": "string",
-				"defaultValue": "file"
+				"type": "string"
 			}
 		},
 		"annotations": [],

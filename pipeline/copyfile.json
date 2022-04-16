@@ -81,49 +81,6 @@
 				}
 			},
 			{
-				"name": "ForEach3",
-				"type": "ForEach",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"activities": [
-						{
-							"name": "Copy data2",
-							"type": "Copy",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"source": {
-									"type": "DelimitedTextSource",
-									"storeSettings": {
-										"type": "AzureBlobFSReadSettings",
-										"recursive": true,
-										"enablePartitionDiscovery": false
-									},
-									"formatSettings": {
-										"type": "DelimitedTextReadSettings"
-									}
-								},
-								"enableStaging": false
-							},
-							"inputs": [
-								{
-									"referenceName": "sourcetxt",
-									"type": "DatasetReference"
-								}
-							]
-						}
-					]
-				}
-			},
-			{
 				"name": "ForEach4",
 				"type": "ForEach",
 				"dependsOn": [
@@ -158,6 +115,7 @@
 									"type": "DelimitedTextSource",
 									"storeSettings": {
 										"type": "AzureBlobFSReadSettings",
+										"recursive": true,
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
