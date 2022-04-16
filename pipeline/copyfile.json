@@ -231,7 +231,13 @@
 							"outputs": [
 								{
 									"referenceName": "outputjson",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"output": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
