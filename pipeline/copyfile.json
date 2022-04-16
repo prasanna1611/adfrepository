@@ -133,7 +133,13 @@
 							"outputs": [
 								{
 									"referenceName": "outputtxt",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"output": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
