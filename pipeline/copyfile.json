@@ -58,7 +58,73 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "filterjson",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata1').output.childitems",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@endswith(item().name,'.json')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "ForEach3",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"activities": [
+						{
+							"name": "Copy data2",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"storeSettings": {
+										"type": "AzureBlobFSReadSettings",
+										"recursive": true,
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "sourcetxt",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "ForEach4",
 				"type": "ForEach",
 				"dependsOn": [
 					{
@@ -76,7 +142,7 @@
 					},
 					"activities": [
 						{
-							"name": "copytxt",
+							"name": "Copy data3",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
@@ -92,7 +158,6 @@
 									"type": "DelimitedTextSource",
 									"storeSettings": {
 										"type": "AzureBlobFSReadSettings",
-										"recursive": true,
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
@@ -122,130 +187,14 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "sourcetxt",
-									"type": "DatasetReference",
-									"parameters": {
-										"source": {
-											"value": "@item().name",
-											"type": "Expression"
-										}
-									}
+									"referenceName": "DelimitedText4",
+									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
 								{
-									"referenceName": "outputtxt",
-									"type": "DatasetReference",
-									"parameters": {
-										"output": {
-											"value": "@item().name",
-											"type": "Expression"
-										}
-									}
-								}
-							]
-						}
-					]
-				}
-			},
-			{
-				"name": "filterjson",
-				"type": "Filter",
-				"dependsOn": [
-					{
-						"activity": "Get Metadata1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"items": {
-						"value": "@activity('Get Metadata1').output.childitems",
-						"type": "Expression"
-					},
-					"condition": {
-						"value": "@endswith(item().name,'.json')",
-						"type": "Expression"
-					}
-				}
-			},
-			{
-				"name": "ForEach2",
-				"type": "ForEach",
-				"dependsOn": [
-					{
-						"activity": "filterjson",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"items": {
-						"value": "@activity('filterjson').output.value",
-						"type": "Expression"
-					},
-					"activities": [
-						{
-							"name": "Copy data1",
-							"type": "Copy",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"source": {
-									"type": "DelimitedTextSource",
-									"storeSettings": {
-										"type": "AzureBlobFSReadSettings",
-										"recursive": true,
-										"enablePartitionDiscovery": false
-									},
-									"formatSettings": {
-										"type": "DelimitedTextReadSettings"
-									}
-								},
-								"sink": {
-									"type": "JsonSink",
-									"storeSettings": {
-										"type": "AzureBlobFSWriteSettings"
-									},
-									"formatSettings": {
-										"type": "JsonWriteSettings"
-									}
-								},
-								"enableStaging": false
-							},
-							"inputs": [
-								{
-									"referenceName": "sourcetxt",
-									"type": "DatasetReference",
-									"parameters": {
-										"source": {
-											"value": "@item().name",
-											"type": "Expression"
-										}
-									}
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "outputjson",
-									"type": "DatasetReference",
-									"parameters": {
-										"output": {
-											"value": "@item().name",
-											"type": "Expression"
-										}
-									}
+									"referenceName": "DelimitedText5",
+									"type": "DatasetReference"
 								}
 							]
 						}

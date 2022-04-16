@@ -1,5 +1,5 @@
 {
-	"name": "sourcetxt",
+	"name": "DelimitedText5",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
@@ -10,12 +10,11 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "inputfile",
+				"folderPath": "csvfile",
 				"fileSystem": "adftransaction"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
-			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": []
