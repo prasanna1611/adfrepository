@@ -8,6 +8,9 @@
 		"parameters": {
 			"myfile": {
 				"type": "string"
+			},
+			"myfile1": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
