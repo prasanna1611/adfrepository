@@ -120,13 +120,19 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "DelimitedText3",
-									"type": "DatasetReference"
+									"referenceName": "sourcetxt",
+									"type": "DatasetReference",
+									"parameters": {
+										"source": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
 								{
-									"referenceName": "DelimitedText2",
+									"referenceName": "outputtxt",
 									"type": "DatasetReference"
 								}
 							]
